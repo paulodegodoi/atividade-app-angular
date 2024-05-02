@@ -1,0 +1,36 @@
+<div>
+  <button>Nova atividade</button>
+  <div>
+    <label>Buscar:</label>
+    <input type="text" placeholder="Buscar" />
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>Nome</th>
+      <th>Prioridade</th>
+      <th>Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (atv of atividades; track $index) {
+    <tr>
+      <td>
+        @if (atv.status == 1) {
+        <img class="status-icon" src="../../../assets/circle-check.png" />
+        } @else {
+        <img class="status-icon" src="../../../assets/circle.png" />
+        }
+      </td>
+      <td>{{ atv.nome }}</td>
+      <td>{{ atv.prioridade }}</td>
+      <td><button>Editar</button></td>
+      <td><button>Detalhes</button></td>
+      <td><button>Excluir</button></td>
+    </tr>
+    }
+  </tbody>
+</table>
