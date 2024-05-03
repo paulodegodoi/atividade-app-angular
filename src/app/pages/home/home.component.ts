@@ -15,10 +15,23 @@ export class HomeComponent implements OnInit {
   constructor(private atividadesService: AtividadesService) {}
 
   ngOnInit(): void {
-    this.atividadesService.getAtividades().subscribe((data) => {
-      // this.atividades = data;
-      this.atividades = data;
-      this.atividadesGeral = data;
+    try {
+      this.atividadesService.getAtividades().subscribe((data) => {
+        console.log(data);
+        this.atividades = data;
+        this.atividadesGeral = data;
+      });
+    } catch (error) {
+      console.log('Ocorreu um erro ao obter as atividades. Erro: ' + error);
+    }
+  }
+
+  handleSearch(e: Event) {
+    const target = e.target as HTMLInputElement;
+    const value = target.value.toLocaleLowerCase();
+
+    this.atividades = this.atividadesGeral.filter((f) => {
+      return f.name.toLocaleLowerCase().includes(value);
     });
   }
 }

@@ -1,6 +1,6 @@
 export interface Atividade {
   atividadeId?: number;
-  nome: string;
+  name: string;
   status: number;
   prioridade: number;
   userIdentity: string;
