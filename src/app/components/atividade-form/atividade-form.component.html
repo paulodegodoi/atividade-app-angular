@@ -1,10 +1,10 @@
 <h1>Adicionar Atividade</h1>
 
-<form action="">
+<form [formGroup]="atividadeForm" (submit)="handleForm()" #formDit>
   <div>
     <label>Nome:</label>
     <input
-      type="text"
+      id="name"
       formControlName="name"
       placeholder="Nome da atividade"
       required
@@ -13,18 +13,11 @@
 
   <div>
     <label>Prioridade:</label>
-    <select id="prioridade" formControllName="prioridade">
-      <option value="NaoDefinida">Não definida</option>
-      <option value="Baixa">Baixa</option>
-      <option value="Media">Média</option>
-      <option value="Alta">Alta</option>
-    </select>
-  </div>
-
-  <div>
-    <label>Status:</label>
-    <select name="" id="">
-      <option value="Aberta">Aberta</option>
+    <select id="prioridade" formControlName="prioridade">
+      <option value="0">Não definida</option>
+      <option value="1">Baixa</option>
+      <option value="2">Média</option>
+      <option value="3">Alta</option>
     </select>
   </div>
 

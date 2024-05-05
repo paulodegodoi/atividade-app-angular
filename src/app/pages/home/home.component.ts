@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     try {
-      this.atividadesService.getAtividades().subscribe((data) => {
+      this.atividadesService.GetAtividades().subscribe((data) => {
         console.log(data);
         this.atividades = data;
         this.atividadesGeral = data;

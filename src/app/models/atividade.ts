@@ -1,5 +1,5 @@
 export interface Atividade {
-  atividadeId?: number;
+  atividadeId: number;
   name: string;
   status: number;
   prioridade: number;
