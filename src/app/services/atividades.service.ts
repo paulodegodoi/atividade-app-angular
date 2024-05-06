@@ -16,23 +16,8 @@ export class AtividadesService {
   }
 
   CreateAtividade(atividade: Atividade): Observable<Atividade> {
-    console.log('CreateAtividade:');
-    console.log(atividade);
-    const json = JSON.stringify(atividade);
-    // const httpOptions = {
-    //   headers: new HttpHeaders({
-    //     'Content-Type': 'application/json',
-    //   }),
-    // };
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'text/plain; charset=utf-8',
-      }),
-    };
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-    console.log('json');
-    const aa = 'aa';
     return this.http.post<Atividade>(this.apiUrl, JSON.stringify(atividade), {
       headers: headers,
     });
