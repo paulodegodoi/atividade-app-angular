@@ -15,7 +15,7 @@ export class AtividadesService {
     return this.http.get<Atividade[]>(this.apiUrl);
   }
 
-  CreateAtividade(atividade: Atividade): Observable<string> {
+  CreateAtividade(atividade: Atividade): Observable<Atividade> {
     console.log('CreateAtividade:');
     console.log(atividade);
     const json = JSON.stringify(atividade);
@@ -33,8 +33,13 @@ export class AtividadesService {
 
     console.log('json');
     const aa = 'aa';
-    return this.http.post<string>(this.apiUrl, JSON.stringify(atividade), {
+    return this.http.post<Atividade>(this.apiUrl, JSON.stringify(atividade), {
       headers: headers,
     });
+  }
+
+  DeleteAtividade(id: number): Observable<void> {
+    console.log('id: ' + id);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

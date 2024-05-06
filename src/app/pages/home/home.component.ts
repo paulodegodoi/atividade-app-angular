@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AtividadesService } from '../../services/atividades.service';
 import { Atividade } from '../../models/atividade';
 import { RouterModule } from '@angular/router';
-
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -33,6 +32,15 @@ export class HomeComponent implements OnInit {
 
     this.atividades = this.atividadesGeral.filter((f) => {
       return f.name.toLocaleLowerCase().includes(value);
+    });
+  }
+
+  handleDelete(id: number) {
+    this.atividadesService.DeleteAtividade(id).subscribe((data) => {
+      this.atividadesGeral = this.atividadesGeral.filter(
+        (atv) => atv.atividadeId !== id
+      );
+      this.atividades = this.atividades.filter((atv) => atv.atividadeId !== id);
     });
   }
 }

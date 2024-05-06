@@ -5,12 +5,13 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { Atividade } from '../../models/atividade';
 
 @Component({
   selector: 'app-atividade-form',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterModule],
   templateUrl: './atividade-form.component.html',
   styleUrl: './atividade-form.component.css',
 })
@@ -20,13 +21,7 @@ export class AtividadeFormComponent {
   atividadeForm!: FormGroup;
   constructor() {}
   ngOnInit(): void {
-    this.atividadeForm = new FormGroup({
-      atividadeId: new FormControl(0),
-      name: new FormControl(''),
-      prioridade: new FormControl(0),
-      status: new FormControl(0),
-      userIdentity: new FormControl(''),
-    });
+    this.resetForm();
   }
 
   handleForm() {
@@ -36,5 +31,17 @@ export class AtividadeFormComponent {
     data.prioridade = Number(data.prioridade);
 
     this.onSubit.emit(data);
+
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.atividadeForm = new FormGroup({
+      atividadeId: new FormControl(0),
+      name: new FormControl(''),
+      prioridade: new FormControl(0),
+      status: new FormControl(0),
+      userIdentity: new FormControl(''),
+    });
   }
 }
