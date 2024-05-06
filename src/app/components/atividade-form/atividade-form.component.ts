@@ -5,7 +5,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Atividade } from '../../models/atividade';
 
 @Component({
@@ -19,7 +19,7 @@ export class AtividadeFormComponent {
   @Output() onSubit = new EventEmitter<Atividade>();
 
   atividadeForm!: FormGroup;
-  constructor() {}
+  constructor(private router: Router) {}
   ngOnInit(): void {
     this.resetForm();
   }
@@ -33,6 +33,7 @@ export class AtividadeFormComponent {
     this.onSubit.emit(data);
 
     this.resetForm();
+    this.router.navigate(['/']);
   }
 
   resetForm() {
